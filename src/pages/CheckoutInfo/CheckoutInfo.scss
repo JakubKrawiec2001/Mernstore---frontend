@@ -1,0 +1,91 @@
+@use "../../colors" as *;
+.checkout-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50vh;
+	margin-top: 4em;
+	.checkout-box {
+		text-align: center;
+		padding: 2em 1em;
+		width: 90%;
+		border-radius: 10px;
+		background-color: #dcdcdc;
+		box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+		.checkout-icon {
+			width: 40px;
+		}
+		.checkout-icon-cancel {
+            font-size: 3rem;
+			color: red;
+		}
+		.checkout-heading {
+			font-size: 2.4rem;
+		}
+		.checkout-heading-cancel {
+			color: red;
+		}
+		.checkout-email-text {
+			margin-top: 0.5em;
+			font-size: 1.2rem;
+		}
+		.checkout-info-text {
+			margin: 2em 0;
+			font-size: 1.4rem;
+			.checkout-span {
+				font-weight: 600;
+			}
+		}
+		.checkout-btn {
+			padding: 0.5em 0;
+			width: 80%;
+			text-transform: uppercase;
+			font-weight: 600;
+			background-color: $yellow;
+			border-radius: 20px;
+			border: none;
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.checkout-container {
+		height: 30vh;
+		.checkout-box {
+			padding: 4em 1em;
+			width: 700px;
+
+			.checkout-btn {
+				width: 40%;
+			}
+		}
+	}
+}
+@media screen and (min-width: 1024px) {
+	.checkout-container {
+		.checkout-box {
+			width: 800px;
+			.checkout-btn {
+				font-size: 1.6rem;
+			}
+		}
+	}
+}
+@media screen and (min-width: 1100px) {
+	.checkout-container {
+		height: 50vh;
+		.checkout-box {
+			.checkout-heading {
+				font-size: 3rem;
+			}
+			.checkout-btn {
+				cursor: pointer;
+				transition: all 0.3s ease;
+				&:hover {
+					background-color: $black;
+					color: $white;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,30 @@
+@use "../../colors" as *;
+.home-links {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+
+	.home-link {
+		padding: 0.5em;
+		font-size: 1.4rem;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		&:hover {
+			background-color: $gray;
+			box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+		}
+	}
+	.active-home-link {
+		font-weight: 600;
+		background-color: $gray;
+		box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.home-links {
+		.home-link {
+			font-size: 2rem;
+		}
+	}
+}

@@ -1,0 +1,134 @@
+@use "../../colors" as *;
+.contact-container {
+	margin-top: 2em;
+	.contact-heading {
+		font-size: 2.4rem;
+		margin-bottom: 0.5em;
+	}
+	.contact-l {
+		.contact-text {
+			font-size: 1.6rem;
+			color: $gray-text;
+		}
+		.contact-socials-box {
+			margin-top: 2em;
+			.socials-icons-box {
+				display: flex;
+				gap: 0.5em;
+				.social-icon {
+					font-size: 2.6rem;
+					cursor: pointer;
+					transition: all 0.3s ease;
+					&:hover {
+						scale: 1.09;
+						color: $yellow;
+					}
+				}
+			}
+			.contact-privacy {
+				margin-top: 1em;
+				font-size: 1.2rem;
+				font-weight: 600;
+			}
+		}
+	}
+	.contact-r {
+		margin-top: 2em;
+		.contact-form-box {
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			.contact-input {
+				padding: 1em;
+				background-color: $dark-gray;
+				border: none;
+			}
+			.contact-textarea {
+				padding: 1em;
+				font-size: 1.4rem;
+				background-color: $dark-gray;
+				border: none;
+				min-height: 100px;
+				max-height: 300px;
+				max-width: 100%;
+				min-width: 100%;
+			}
+			.contact-form-btn {
+				padding: 0.5em 1em;
+				width: 30%;
+				border: 1px solid $black;
+				border-radius: 4px;
+				background: none;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				&:hover {
+					background-color: $black;
+					color: $white;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.contact-container {
+		display: flex;
+		justify-content: space-between;
+
+		.contact-l {
+			flex: 1;
+			.contact-socials-box {
+				.contact-heading {
+					margin-top: 2em;
+				}
+			}
+		}
+		.contact-r {
+			margin-top: 0;
+			flex: 1;
+		}
+	}
+}
+@media screen and (min-width: 1100px) {
+	.contact-container {
+		margin-top: 4em;
+		margin-bottom: 10em;
+		.contact-heading {
+			font-size: 3rem;
+		}
+		.contact-l {
+			flex: 1;
+			.contact-text {
+				font-size: 2rem;
+			}
+			.contact-socials-box {
+				.socials-icons-box {
+					.social-icon {
+						font-size: 3rem;
+					}
+				}
+				.contact-privacy {
+					font-size: 1.6rem;
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width: 1400px) {
+	.contact-container {
+		.contact-r {
+			.contact-form-box {
+				gap: 2em;
+				.contact-input {
+					font-size: 1.8rem;
+				}
+				.contact-textarea {
+					font-size: 1.8rem;
+				}
+				.contact-form-btn {
+					font-size: 1.8rem;
+				}
+			}
+		}
+	}
+}

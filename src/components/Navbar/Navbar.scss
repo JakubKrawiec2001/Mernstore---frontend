@@ -1,0 +1,254 @@
+@use "../../colors" as *;
+
+.navbar {
+	position: relative;
+	padding: 3em 0;
+	background-color: $black;
+	.active {
+		color: $yellow;
+	}
+
+	.mobile-menu {
+		display: flex;
+		flex-direction: column;
+		gap: 3em;
+		position: fixed;
+		top: 0;
+		left: -100%;
+		padding: 8em 0 0 3em;
+		width: 70%;
+		height: 100vh;
+		z-index: 1000;
+		background-color: $white;
+		transition: all 0.3s ease;
+		.mobile-menu-text {
+			font-size: 1.6rem;
+			color: $black;
+		}
+		.mobile-menu-text:last-child {
+			color: red;
+		}
+		.close-icon {
+			position: absolute;
+			top: 2%;
+			right: 7%;
+			font-size: 3rem;
+			cursor: pointer;
+		}
+	}
+	.open {
+		left: 0;
+	}
+	.shadow {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		width: 100%;
+		height: 100vh;
+		background-color: rgba(0, 0, 0, 0.6);
+		z-index: 999;
+		transition: all 0.3s ease;
+	}
+	.navbar-container {
+		color: $white;
+		.navbar-up {
+			display: none;
+		}
+		.navbar-down {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			.navbar-l {
+				display: flex;
+				align-items: center;
+				gap: 1em;
+
+				.navbar-text {
+					display: none;
+				}
+				.logo {
+					gap: 0.2em;
+					font-size: 3rem;
+
+					.logo-span {
+						font-weight: bold;
+						padding: 0.2em 0.4em;
+						font-size: 1.2rem;
+						border-radius: 300px;
+						background-color: $yellow;
+						color: $black;
+					}
+				}
+				.menu-btn {
+					display: flex;
+					background: none;
+					border: none;
+					color: $white;
+					font-size: 2.8rem;
+					cursor: pointer;
+				}
+			}
+			.navbar-mobile-items {
+				display: flex;
+				gap: 1em;
+
+				.navbar-mobile-icon {
+					position: relative;
+					display: flex;
+					font-size: 2.8rem;
+					.cart-span {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						position: absolute;
+						top: -30%;
+						right: -20%;
+						width: 20px;
+						font-size: 1.2rem;
+						font-weight: bold;
+						aspect-ratio: 1 / 1;
+						background-color: $yellow;
+						color: $black;
+						border-radius: 100%;
+					}
+				}
+			}
+			.navbar-r {
+				display: none;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	.navbar {
+		.mobile-menu {
+			display: none;
+		}
+		.navbar-container {
+			.navbar-text {
+				font-size: 1.6rem;
+				transition: all 0.3s ease;
+				cursor: pointer;
+				&:hover {
+					color: $yellow;
+				}
+			}
+			.navbar-up {
+				display: flex;
+				justify-content: space-between;
+				padding-bottom: 2em;
+				border-bottom: 1px solid #7777776c;
+				.navbar-text:nth-child(2) {
+					border-right: 1px solid #7777776c;
+					border-left: 1px solid #7777776c;
+				}
+				.navbar-l {
+					.navbar-text {
+						padding: 0 1em;
+					}
+					.navbar-text:nth-child(1) {
+						padding-left: 0;
+					}
+					.navbar-text:nth-child(3) {
+						-webkit-background-clip: text;
+						-webkit-text-fill-color: transparent;
+						background-color: #ffcb43;
+						background-image: linear-gradient(
+							319deg,
+							#ffcb43 0%,
+							#ff6425 37%,
+							#ff0016 100%
+						);
+					}
+				}
+				.navbar-r {
+					display: flex;
+					.navbar-text {
+						position: relative;
+						display: flex;
+						align-items: center;
+						gap: 0.2em;
+						padding: 0 1em;
+						.navbar-text-icon {
+							font-size: 2rem;
+						}
+						.cart-span {
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							position: absolute;
+							top: -30%;
+							right: -30%;
+							width: 20px;
+							font-size: 1.4rem;
+							font-weight: bold;
+							aspect-ratio: 1 / 1;
+							background-color: $yellow;
+							color: $black;
+							border-radius: 100%;
+						}
+					}
+
+					.navbar-text:nth-child(3) {
+						padding-right: 0;
+					}
+				}
+			}
+			.navbar-down {
+				padding-top: 2em;
+				.navbar-l {
+					gap: 3em;
+					.logo {
+						font-size: 3.4rem;
+						.logo-span {
+							font-size: 1.6rem;
+						}
+					}
+					.menu-btn {
+						display: none;
+					}
+					.navbar-text {
+						display: block;
+						font-size: 1.6rem;
+					}
+				}
+				.navbar-r {
+					display: block;
+					.search-container {
+						display: flex;
+						height: 40px;
+
+						.search-input {
+							padding-left: 1em;
+							font-size: 1.6rem;
+							border-top-left-radius: 300px;
+							border-bottom-left-radius: 300px;
+							border: none;
+							outline: none;
+						}
+						.search-btn {
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							padding: 0 1em;
+							height: 100%;
+							font-size: 1.6rem;
+							border-top-right-radius: 300px;
+							border-bottom-right-radius: 300px;
+							border: none;
+							background-color: $white;
+							cursor: pointer;
+						}
+					}
+				}
+				.navbar-mobile-items {
+					display: none;
+				}
+			}
+		}
+	}
+}

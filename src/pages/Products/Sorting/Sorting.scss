@@ -1,0 +1,180 @@
+@use "../../../colors" as *;
+.sorting-container {
+	display: flex;
+	flex-direction: column;
+	gap: 2em;
+	.sorting-by-box {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1em;
+		background-color: $dark-gray;
+		.sorting-by-icons-box {
+			display: flex;
+			gap: 1em;
+
+			.sorting-by-icon {
+				font-size: 2rem;
+				color: $gray-text;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				&:hover {
+					color: $yellow;
+				}
+			}
+			.sorting-by-icon-active {
+				color: $black;
+			}
+			.sorting-by-icon:nth-child(2) {
+				rotate: 90deg;
+			}
+		}
+		.sorting-by-select {
+			padding: 0.5em;
+			padding-right: 5em;
+			font-size: 1.2rem;
+			border-radius: 4px;
+			border: 1px solid #ddd;
+			color: $gray-text;
+			cursor: pointer;
+		}
+	}
+}
+@media screen and (max-width: 1099px) {
+	.sorting-container {
+		.sorting-category-box {
+			display: none;
+		}
+		.sorting-tags-box {
+			display: none;
+		}
+		.sorting-colors-box {
+			display: none;
+		}
+	}
+}
+@media screen and (min-width: 1100px) {
+	.sorting-container {
+		display: flex;
+		flex-direction: column;
+		position: sticky;
+		top: 0;
+		flex: 1;
+		height: fit-content;
+		.sorting-by-box {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1em;
+			background-color: $dark-gray;
+			.sorting-by-icons-box {
+				display: flex;
+				gap: 1em;
+				.sorting-by-icon {
+					font-size: 2rem;
+					cursor: pointer;
+					transition: all 0.3s ease;
+				}
+			}
+			.sorting-by-select {
+				padding: 0.5em;
+				padding-right: 5em;
+				font-size: 1.4rem;
+				border: 1px solid #ddd;
+				cursor: pointer;
+			}
+		}
+		.sorting-category-box {
+			padding: 1em;
+			border-radius: 4px;
+			border: 1px solid #ddd;
+			.sorting-category-item {
+				margin-bottom: 0.2em;
+				font-size: 1.6rem;
+				color: $gray-text;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				&:hover {
+					color: $black;
+					font-weight: 600;
+				}
+			}
+			.sorting-category-item-active {
+				color: $black;
+				font-weight: 600;
+			}
+			.sorting-category-heading {
+				margin-bottom: 1em;
+				font-size: 2rem;
+				font-weight: 700;
+				color: $black;
+			}
+		}
+		.sorting-tags-box {
+			padding: 1em;
+			border-radius: 4px;
+			border: 1px solid #ddd;
+			.sorting-tags-heading {
+				margin-bottom: 1em;
+				font-size: 2rem;
+				font-weight: 700;
+				color: $black;
+			}
+			.sorting-tags-container {
+				display: flex;
+				align-items: center;
+				gap: 1em;
+				.sorting-tag {
+					padding: 0.5em 1em;
+					font-size: 1.3rem;
+					border-radius: 300px;
+					color: $gray-text;
+					background-color: $gray;
+					cursor: pointer;
+					transition: all 0.3s ease;
+					&:hover {
+						color: $dark-gray;
+						background-color: $gray-text;
+					}
+				}
+				.sorting-tag-active {
+					color: $black;
+					font-weight: 600;
+				}
+			}
+		}
+		.sorting-colors-box {
+			padding: 1em;
+			border-radius: 4px;
+			border: 1px solid #ddd;
+			.sorting-colors-heading {
+				margin-bottom: 1em;
+				font-size: 2rem;
+				font-weight: 700;
+				color: $black;
+			}
+			.sorting-colors-item {
+				display: flex;
+				gap: 1em;
+				margin-bottom: 0.2em;
+
+				.sorting-colors-text {
+					font-size: 1.6rem;
+					color: $gray-text;
+					order: 1;
+					cursor: pointer;
+					transition: all 0.3s ease;
+
+					&:hover {
+						color: $black;
+						font-weight: 600;
+					}
+				}
+				.sorting-colors-input {
+					order: 0;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,139 @@
+@use "../../../colors" as *;
+
+.reviews-container {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	gap: 4em;
+	margin-top: 4em;
+	.reviews-section-heading {
+		font-size: 1.6rem;
+		font-weight: 600;
+	}
+	.reviews-l {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		.reviews-item {
+			display: flex;
+			gap: 1em;
+			margin-top: 2em;
+
+			.reviews-avatar {
+				font-size: 4rem;
+			}
+			.reviews-body {
+				width: 100%;
+				padding: 1em;
+				border-radius: 4px;
+				border: 1px solid #ddd;
+				.stars-box {
+					.star {
+						font-size: 1.4rem;
+						color: gold;
+					}
+					.star:last-child {
+						color: #777;
+					}
+				}
+				.reviews-name {
+					font-size: 1.2rem;
+					font-weight: 600;
+					.date-span {
+						font-weight: 400;
+					}
+				}
+				.reviews-desc {
+					margin-top: 1em;
+					font-size: 1.2rem;
+				}
+			}
+		}
+	}
+	.reviews-r {
+		flex: 1;
+		.reviews-form-container {
+			.reviews-input-box {
+				display: flex;
+				flex-direction: column;
+				margin: 1em 0;
+				.reviews-form-text {
+					font-size: 1.4rem;
+					color: $gray-text;
+				}
+				.reviews-textarea {
+					border: 1px solid #ddd;
+					resize: vertical;
+					min-height: 100px;
+					max-height: 300px;
+				}
+				.reviews-input {
+					padding: 1em;
+					width: 50%;
+					border: 1px solid #ddd;
+				}
+			}
+			.reviews-btn {
+				margin-top: 1em;
+				padding: 0.5em 1em;
+				font-size: 1.4rem;
+				background-color: $black;
+				color: $white;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				&:hover {
+					background-color: $yellow;
+					color: $black;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.reviews-container {
+		.reviews-section-heading {
+			font-size: 2rem;
+		}
+		.reviews-l {
+			.reviews-item {
+				.reviews-avatar {
+					font-size: 6rem;
+				}
+				.reviews-body {
+					.stars-box {
+						.star {
+							font-size: 2rem;
+						}
+					}
+					.reviews-name {
+						font-size: 1.6rem;
+					}
+					.reviews-desc {
+						font-size: 1.6rem;
+					}
+				}
+			}
+		}
+		.reviews-r {
+			.reviews-form-container {
+				.reviews-input-box {
+					.reviews-form-text {
+						font-size: 1.6rem;
+					}
+				}
+				.reviews-btn {
+					font-size: 1.6rem;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1400px) {
+	.reviews-container {
+		flex-direction: row;
+	}
+}

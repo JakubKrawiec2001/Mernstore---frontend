@@ -1,0 +1,26 @@
+@use "../../colors" as *;
+.button {
+	padding: 0.3em 0.7em;
+	font-size: 1.2rem;
+	border-radius: 300px;
+	background-color: $yellow;
+	color: $black;
+	font-weight: 600;
+	transition: all 0.3s ease;
+	&:hover {
+		color: $yellow;
+		background-color: $black;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.button {
+		font-size: 1.6rem;
+	}
+}
+
+@media screen and (min-width: 1400px) {
+	.button {
+		font-size: 2rem;
+	}
+}

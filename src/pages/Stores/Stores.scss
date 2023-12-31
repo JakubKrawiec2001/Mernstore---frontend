@@ -1,0 +1,118 @@
+@use "../../colors" as *;
+
+.stores-container {
+	display: flex;
+	flex-direction: column;
+	gap: 5em;
+	margin-top: 4em;
+	margin-bottom: 10em;
+
+	.stores-box {
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		gap: 2em;
+		border-radius: 4px;
+		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+		.stores-image-container {
+			height: 200px;
+			border-radius: 4px;
+			flex: 1;
+		}
+		.stores-text-box {
+			padding: 1em;
+			flex: 1;
+			.stores-name {
+				font-size: 2rem;
+				font-weight: 600;
+			}
+			.stores-street {
+				font-size: 1.6rem;
+				color: $gray-text;
+			}
+			.stores-bold-text {
+				font-size: 1.7rem;
+				font-weight: 600;
+			}
+			.stores-bold-text:nth-child(4) {
+				margin-top: 1em;
+			}
+			.stores-text {
+				font-size: 1.4rem;
+			}
+			.stores-btn {
+				margin-top: 1em;
+				padding: 0.2em 0.5em;
+				font-size: 1.8rem;
+				font-weight: 600;
+				background-color: $black;
+				color: $white;
+				border-radius: 4px;
+				border: none;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				&:hover {
+					background-color: $yellow;
+				}
+			}
+		}
+	}
+	.stores-box:nth-child(1) {
+		.stores-image-container {
+			background-image: url("../../assets/images/store.jpg");
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	}
+	.stores-box:nth-child(2) {
+		.stores-image-container {
+			background-image: url("../../assets/images/store-2.jpg");
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	}
+}
+@media screen and (min-width: 768px) {
+	.stores-container {
+		.stores-box {
+			flex-direction: row;
+			height: 200px;
+			.stores-image-container {
+				height: 100%;
+			}
+		}
+	}
+}
+@media screen and (min-width: 1100px) {
+	.stores-container {
+		.stores-box {
+			height: 230px;
+		}
+	}
+}
+
+@media screen and (min-width: 1400px) {
+	.stores-container {
+		.stores-box {
+			height: 280px;
+
+			.stores-text-box {
+				.stores-name {
+					font-size: 2.8rem;
+				}
+				.stores-street {
+					width: 80%;
+					font-size: 2.2rem;
+				}
+				.stores-bold-text {
+					font-size: 2.2rem;
+				}
+				.stores-text {
+					font-size: 1.8rem;
+				}
+			}
+		}
+	}
+}

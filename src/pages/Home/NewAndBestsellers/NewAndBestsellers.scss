@@ -1,0 +1,159 @@
+@use "../../../colors" as *;
+.nb-container {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 1em;
+	padding-top: 4em;
+	padding-bottom: 4em;
+	background-color: $gray;
+
+	.nb-item {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		padding: 0.5em;
+		width: 48%;
+		background-color: $white;
+		border-radius: 4px;
+		box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		.nb-heart {
+			position: absolute;
+			top: 2%;
+			right: 2%;
+			font-size: 1.6rem;
+			z-index: 100;
+			border-radius: 100%;
+			transition: all 0.3s ease;
+		}
+		.nb-heart:hover {
+			background-color: $yellow;
+		}
+		.nb-active-heart {
+			background-color: $yellow;
+		}
+		.nb-img-box {
+			display: flex;
+			.nb-img {
+				margin: 0 auto;
+				width: 80%;
+				transition: all 0.3s ease;
+			}
+		}
+		.nb-text-box {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			margin-top: 2em;
+			margin-bottom: 1em;
+			height: 100%;
+
+			.nb-category {
+				color: #777;
+				font-size: 1.1rem;
+			}
+			.nb-name {
+				padding: 0.5em 0;
+				font-size: 1.3rem;
+			}
+			.nb-price {
+				font-size: 1.3rem;
+				font-weight: bold;
+			}
+		}
+		.nb-btn {
+			padding: 0.7em 0.5em;
+			background: none;
+			border: 2px solid $yellow;
+			border-radius: 4px;
+			transition: all 0.3s ease;
+			cursor: pointer;
+		}
+	}
+	.nb-item:hover {
+		.nb-img {
+			scale: 1.1;
+		}
+		.nb-btn {
+			background-color: $yellow;
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.nb-container {
+		.nb-item {
+			padding: 1em;
+			width: 32%;
+			.nb-heart {
+				font-size: 2rem;
+			}
+			.nb-text-box {
+				.nb-category {
+					font-size: 1.4rem;
+				}
+				.nb-name {
+					font-size: 1.5rem;
+				}
+			}
+			.nb-btn {
+				font-size: 1.4rem;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.nb-container {
+		padding: 6em 2em;
+		.nb-item {
+			flex: 1;
+
+			.nb-text-box {
+				.nb-category {
+					font-size: 1.2rem;
+				}
+				.nb-name {
+					font-size: 1.4rem;
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width: 1200px) {
+	.nb-container {
+		.nb-item {
+			.nb-heart {
+				font-size: 2.2rem;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1920px) {
+	.nb-container {
+		.nb-item {
+			padding: 2em;
+			.nb-heart {
+				font-size: 2.6rem;
+			}
+			.nb-text-box {
+				.nb-category {
+					font-size: 1.4rem;
+				}
+				.nb-name {
+					font-size: 1.6rem;
+				}
+				.nb-price {
+					font-size: 1.8rem;
+				}
+			}
+			.nb-btn {
+				font-size: 1.6rem;
+			}
+		}
+	}
+}
