@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "./CheckoutInfo.scss";
 import Footer from "../../components/Footer/Footer";
 import Delivery from "../../components/Delivery/Delivery";
 import successIcon from "../../assets/icons/success.png";
 import { Link, useLocation } from "react-router-dom";
 import { TbShoppingBagX } from "react-icons/tb";
+import { SelectedProductContext } from "../../context/selectedProductContext";
 
 const CheckoutInfo = () => {
+	const { setCartItems, setTotalAmount, setTotalNumberOfItems } = useContext(
+		SelectedProductContext
+	);
 	const location = useLocation();
+
+	useEffect(() => {
+		localStorage.setItem("cart", JSON.stringify([]));
+		localStorage.setItem("totalAmount", JSON.stringify(0));
+		localStorage.setItem("numberOfProducts", JSON.stringify(0));
+		setCartItems([]);
+		setTotalAmount(0);
+		setTotalNumberOfItems(0);
+	}, []);
 
 	return (
 		<>

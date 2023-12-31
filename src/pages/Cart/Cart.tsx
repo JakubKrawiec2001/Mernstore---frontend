@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ProductType, ShopType } from "../../types/types";
 import { SelectedProductContext } from "../../context/selectedProductContext";
 import CartItem from "./CartItem/CartItem";
@@ -10,9 +10,15 @@ import { getStripe } from "../../utils/getStripe";
 import Loading from "../../components/Loading/Loading";
 
 const Cart = () => {
-	const { cartItems, totalAmount, setLoading, loading } = useContext<ShopType>(
-		SelectedProductContext
-	);
+	const {
+		cartItems,
+		setCartItems,
+		totalAmount,
+		setTotalAmount,
+		setTotalNumberOfItems,
+		setLoading,
+		loading,
+	} = useContext<ShopType>(SelectedProductContext);
 
 	const handleCheckout = async (e: React.SyntheticEvent) => {
 		e.preventDefault();
@@ -36,6 +42,16 @@ const Cart = () => {
 			setLoading(false);
 		}
 	};
+	useEffect(() => {
+		const storedCart = localStorage.getItem("cart");
+		const storedAmount = localStorage.getItem("totalAmount");
+		const storedNumberOfProducts = localStorage.getItem("numberOfProducts");
+
+		if (storedCart) setCartItems(JSON.parse(storedCart));
+		if (storedAmount) setTotalAmount(JSON.parse(storedAmount));
+		if (storedNumberOfProducts)
+			setTotalNumberOfItems(JSON.parse(storedNumberOfProducts));
+	}, []);
 
 	return (
 		<>

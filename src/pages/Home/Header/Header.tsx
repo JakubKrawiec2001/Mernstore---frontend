@@ -17,7 +17,7 @@ const Header = () => {
 					<p className="header-text">New Iphone 15 Pro Max</p>
 					<p className="header-price">$1299.99</p>
 					<div className="buttons-container">
-						<Button path="/cart" title="Buy Now" function={addToCart}></Button>
+						<Button path="/cart" title="Shop Now" function={addToCart}></Button>
 						<Link
 							to="/details/65675453824fc0e289e8b177"
 							className="header-link">

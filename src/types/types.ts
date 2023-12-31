@@ -25,7 +25,9 @@ export type ShopType = {
 	cartItems: ProductType[];
 	setCartItems: React.Dispatch<React.SetStateAction<string[]>>;
 	totalAmount: number;
+	setTotalAmount: React.Dispatch<React.SetStateAction<number>>;
 	totalNumberOfItems: number;
+	setTotalNumberOfItems: React.Dispatch<React.SetStateAction<number>>;
 	loading: boolean;
 	setLoading: (boolean) => void;
 };

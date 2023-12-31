@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { ProductType, ShopType } from "../types/types";
 import { toast } from "react-toastify";
 import { useGetProducts } from "../hooks/useGetProducts";
@@ -14,6 +14,8 @@ const defaultValue: ShopType = {
 	favouriteProduct: {},
 	cartItems: [],
 	setCartItems: () => [],
+	setTotalAmount: () => 0,
+	setTotalNumberOfItems: () => 0,
 	totalAmount: 0,
 	totalNumberOfItems: 0,
 	loading: false,
@@ -24,10 +26,6 @@ export const SelectedProductContext = createContext<ShopType>(defaultValue);
 
 export const SelectedProductContextProvider = (props) => {
 	const { products } = useGetProducts();
-	const [selectedProduct, setSelectedProduct] = useState<
-		{ string: number } | {}
-	>({});
-
 	const [favouriteProduct, setFavouriteProduct] = useState<
 		{ string: number } | {}
 	>({});
@@ -35,13 +33,14 @@ export const SelectedProductContextProvider = (props) => {
 	const [totalAmount, setTotalAmount] = useState(0);
 	const [totalNumberOfItems, setTotalNumberOfItems] = useState(0);
 	const [loading, setLoading] = useState(true);
-
 	let updatedCart;
 
 	const getFavouriteProduct = (itemId: string): number => {
 		if (itemId in favouriteProduct) {
 			return favouriteProduct[itemId];
 		}
+
+		// localStorage.setItem("wishlist", JSON.stringify(favouriteProduct));
 		return 0;
 	};
 
@@ -63,6 +62,7 @@ export const SelectedProductContextProvider = (props) => {
 				setFavouriteProduct(updatedObject);
 			}
 		}
+
 		toast.success("Product successfully removed from wishlist");
 	};
 
@@ -80,6 +80,7 @@ export const SelectedProductContextProvider = (props) => {
 		}
 		setCartItems(updatedCart);
 		updateTotalValues(updatedCart);
+		updateLocalStorage(updatedCart);
 		toast.success("Product selected successfully");
 	};
 
@@ -97,12 +98,14 @@ export const SelectedProductContextProvider = (props) => {
 		}
 		setCartItems(updatedCart);
 		updateTotalValues(updatedCart);
+		updateLocalStorage(updatedCart);
 	};
 
 	const removeAllFromCart = (itemId: string) => {
 		updatedCart = cartItems.filter((item) => item._id !== itemId);
 		setCartItems(updatedCart);
-		setTotalNumberOfItems(calculateTotalItems(updatedCart));
+		updateTotalValues(updatedCart);
+		updateLocalStorage(updatedCart);
 	};
 	const calculateTotalItems = (cart: ProductType[]) => {
 		return cart.reduce((total, product) => total + product.quantity, 0);
@@ -128,11 +131,24 @@ export const SelectedProductContextProvider = (props) => {
 
 		setCartItems(updatedCart);
 		updateTotalValues(updatedCart);
+		updateLocalStorage(updatedCart);
 	};
 
 	const updateTotalValues = (updatedCart) => {
 		setTotalAmount(calculateTotalPrice(updatedCart));
 		setTotalNumberOfItems(calculateTotalItems(updatedCart));
+	};
+
+	const updateLocalStorage = (updatedCart) => {
+		localStorage.setItem("cart", JSON.stringify(updatedCart));
+		localStorage.setItem(
+			"totalAmount",
+			JSON.stringify(calculateTotalPrice(updatedCart))
+		);
+		localStorage.setItem(
+			"numberOfProducts",
+			JSON.stringify(calculateTotalItems(updatedCart))
+		);
 	};
 
 	const contextValue: ShopType = {
@@ -147,7 +163,9 @@ export const SelectedProductContextProvider = (props) => {
 		cartItems,
 		setCartItems,
 		totalAmount,
+		setTotalAmount,
 		totalNumberOfItems,
+		setTotalNumberOfItems,
 		loading,
 		setLoading,
 	};
