@@ -8,7 +8,6 @@ import { UserErrors } from "../../errors";
 import { useCookies } from "react-cookie";
 import { toast } from "react-toastify";
 
-
 const SignIn = () => {
 	const [username, setUsername] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
@@ -18,10 +17,13 @@ const SignIn = () => {
 	const handleSubmit = async (e: React.SyntheticEvent) => {
 		e.preventDefault();
 		try {
-			const result = await axios.post("http://localhost:3001/user/login", {
-				username,
-				password,
-			});
+			const result = await axios.post(
+				"https://mernstore-backend.onrender.com/user/login",
+				{
+					username,
+					password,
+				}
+			);
 			setCookies("access_token", result.data.token);
 			localStorage.setItem("userID", result.data.userID);
 			navigate("/");

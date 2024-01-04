@@ -15,7 +15,7 @@ const SignUp = () => {
 	const handleSubmit = async (e: React.SyntheticEvent) => {
 		e.preventDefault();
 		try {
-			await axios.post("http://localhost:3001/user/register", {
+			await axios.post("https://mernstore-backend.onrender.com/user/register", {
 				username,
 				password,
 			});

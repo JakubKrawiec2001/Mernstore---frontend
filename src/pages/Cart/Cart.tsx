@@ -29,7 +29,7 @@ const Cart = () => {
 		try {
 			setLoading(true);
 			const response = await axios.post(
-				"http://localhost:3001/stripe/create-checkout-session",
+				"https://mernstore-backend.onrender.com/stripe/create-checkout-session",
 				{
 					cartItems: cartItems,
 				}
