@@ -8,6 +8,12 @@
 		gap: 1em;
 		flex: 3;
 		height: fit-content;
+
+		.no-products-text {
+			margin: 0 auto;
+			font-size: 2rem;
+			font-weight: 600;
+		}
 	}
 }
 

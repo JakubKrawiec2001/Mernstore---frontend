@@ -20,8 +20,7 @@ export type ShopType = {
 	removeAllFromCart: (itemId: string) => void;
 	removeFromWishList: (itemId: string) => void;
 	updateCartItemCount: (newAmount: number, itemId: string) => void;
-	getFavouriteProduct: (itemId: string) => number;
-	favouriteProduct: {};
+	favouriteProduct: string[];
 	cartItems: ProductType[];
 	setCartItems: React.Dispatch<React.SetStateAction<string[]>>;
 	totalAmount: number;

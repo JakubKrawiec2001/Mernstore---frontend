@@ -8,6 +8,7 @@ import "./Cart.scss";
 import axios from "axios";
 import { getStripe } from "../../utils/getStripe";
 import Loading from "../../components/Loading/Loading";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
 	const {
@@ -71,7 +72,10 @@ const Cart = () => {
 					<p className="cart-total-amount-text">${totalAmount.toFixed(2)}</p>
 				</div>
 				<div className="cart-btns-container">
-					<button className="cart-btn">Continue Shopping</button>
+					<Link to="/products">
+						<button className="cart-btn continue-btn">Continue Shopping</button>
+					</Link>
+
 					{totalAmount !== 0 && !loading ? (
 						<button className="cart-btn" onClick={(e) => handleCheckout(e)}>
 							Checkout

@@ -69,6 +69,10 @@
 			.auth-link {
 				font-weight: bold;
 				text-decoration: underline;
+				transition: all 0.3s ease;
+				&:hover {
+					color: $yellow;
+				}
 			}
 		}
 	}

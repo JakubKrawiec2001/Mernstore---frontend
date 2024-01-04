@@ -10,7 +10,7 @@ const Product = (props: { view: string; product: ProductType }) => {
 	const { view, product } = props;
 	const { addToCart, addToWishlist, favouriteProduct, removeFromWishList } =
 		useContext<ShopType>(SelectedProductContext);
-
+	const isFavourite = favouriteProduct.includes(product._id);
 	return (
 		<div
 			className={
@@ -21,12 +21,10 @@ const Product = (props: { view: string; product: ProductType }) => {
 			key={product._id}>
 			<AiOutlineHeart
 				className={
-					product._id in favouriteProduct
-						? "product-heart active-product-heart"
-						: "product-heart"
+					isFavourite ? "product-heart active-product-heart" : "product-heart"
 				}
 				onClick={() =>
-					product._id in favouriteProduct
+					isFavourite
 						? removeFromWishList(product._id)
 						: addToWishlist(product._id)
 				}></AiOutlineHeart>

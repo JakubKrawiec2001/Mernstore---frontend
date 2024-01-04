@@ -118,10 +118,11 @@ const SelectedProduct = (props: { product: ProductType }) => {
 						*Free delivery with advance payment
 					</p>
 				</div>
+
 				<button
 					className="selected-product-btn"
 					onClick={() => addToCart(product._id)}>
-					Buy Now
+					Add To Cart
 				</button>
 			</div>
 		</div>

@@ -32,6 +32,36 @@ const Products = () => {
 		}
 		return order;
 	});
+	let foundProduct = false;
+	const productList = sortedProducts.map((product: ProductType) => {
+		if (
+			(categoryParam === "All" || categoryParam === product.category) &&
+			(colorParam === product.color || colorParam === "")
+		) {
+			foundProduct = true;
+			return <Product view={view} product={product}></Product>;
+		} else if (
+			categoryParam === "Bestsellers" &&
+			product.bestseller &&
+			(colorParam === product.color || colorParam === "")
+		) {
+			foundProduct = true;
+			return <Product view={view} product={product}></Product>;
+		} else if (
+			categoryParam === "Sale" &&
+			product.sale &&
+			(colorParam === product.color || colorParam === "")
+		) {
+			foundProduct = true;
+			return <Product view={view} product={product}></Product>;
+		}
+
+		return null;
+	});
+
+	if (!foundProduct) {
+		productList.push(<p className="no-products-text">There are no products with the selected filter</p>);
+	}
 
 	return (
 		<div>
@@ -48,38 +78,7 @@ const Products = () => {
 					colorParam={colorParam}
 					sortOrder={sortOrder}></Sorting>
 				<div className="product-container">
-					{!loading ? (
-						sortedProducts.map((product: ProductType) => {
-							if (
-								categoryParam === "All" ||
-								categoryParam === product.category
-							) {
-								if (colorParam === product.color) {
-									return <Product view={view} product={product}></Product>;
-								} else if (colorParam === "") {
-									return <Product view={view} product={product}></Product>;
-								}
-							} else if (categoryParam === "Bestsellers") {
-								if (product.bestseller) {
-									if (colorParam === product.color) {
-										return <Product view={view} product={product}></Product>;
-									} else if (colorParam === "") {
-										return <Product view={view} product={product}></Product>;
-									}
-								}
-							} else if (categoryParam === "Sale") {
-								if (product.sale === true) {
-									if (colorParam === product.color) {
-										return <Product view={view} product={product}></Product>;
-									} else if (colorParam === "") {
-										return <Product view={view} product={product}></Product>;
-									}
-								}
-							}
-						})
-					) : (
-						<Loading></Loading>
-					)}
+					{!loading ? productList : <Loading></Loading>}
 				</div>
 			</div>
 			<Delivery></Delivery>

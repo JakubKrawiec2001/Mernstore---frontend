@@ -10,8 +10,7 @@ const defaultValue: ShopType = {
 	removeAllFromCart: () => null,
 	removeFromWishList: () => null,
 	updateCartItemCount: () => null,
-	getFavouriteProduct: () => 0,
-	favouriteProduct: {},
+	favouriteProduct: [],
 	cartItems: [],
 	setCartItems: () => [],
 	setTotalAmount: () => 0,
@@ -26,43 +25,42 @@ export const SelectedProductContext = createContext<ShopType>(defaultValue);
 
 export const SelectedProductContextProvider = (props) => {
 	const { products } = useGetProducts();
-	const [favouriteProduct, setFavouriteProduct] = useState<
-		{ string: number } | {}
-	>({});
+	const [favouriteProduct, setFavouriteProduct] = useState(() => {
+		const storedWishlist = localStorage.getItem("wishlist");
+		return storedWishlist ? JSON.parse(storedWishlist) : [];
+	});
 	const [cartItems, setCartItems] = useState([]);
 	const [totalAmount, setTotalAmount] = useState(0);
-	const [totalNumberOfItems, setTotalNumberOfItems] = useState(0);
+	const [totalNumberOfItems, setTotalNumberOfItems] = useState(() => {
+		const storedTotalItems = localStorage.getItem("numberOfProducts");
+		return storedTotalItems ? JSON.parse(storedTotalItems) : 0;
+	});
 	const [loading, setLoading] = useState(true);
 	let updatedCart;
 
-	const getFavouriteProduct = (itemId: string): number => {
-		if (itemId in favouriteProduct) {
-			return favouriteProduct[itemId];
-		}
-
-		// localStorage.setItem("wishlist", JSON.stringify(favouriteProduct));
-		return 0;
-	};
-
 	const addToWishlist = (itemId: string) => {
-		if (!favouriteProduct[itemId]) {
-			setFavouriteProduct((prev) => ({ ...prev, [itemId]: 1 }));
-		} else {
-			setFavouriteProduct((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-		}
+		setFavouriteProduct((prevFavouriteProduct) => {
+			if (prevFavouriteProduct.length !== 0) {
+				return [...prevFavouriteProduct, itemId];
+			} else {
+				return [itemId];
+			}
+		});
 
 		toast.success("Product successfully added to wishlist");
 	};
-	const removeFromWishList = (itemId: string) => {
-		for (const key in favouriteProduct) {
-			if (key === itemId) {
-				const updatedObject = Object.fromEntries(
-					Object.entries(favouriteProduct).filter(([key]) => key !== itemId)
-				);
-				setFavouriteProduct(updatedObject);
-			}
-		}
 
+	useEffect(() => {
+		localStorage.setItem("wishlist", JSON.stringify(favouriteProduct));
+	}, [favouriteProduct]);
+
+	const removeFromWishList = (itemId: string) => {
+		setFavouriteProduct((prevFavouriteProduct) => {
+			const updatedWishlist = prevFavouriteProduct.filter(
+				(item) => item !== itemId
+			);
+			return updatedWishlist;
+		});
 		toast.success("Product successfully removed from wishlist");
 	};
 
@@ -156,7 +154,6 @@ export const SelectedProductContextProvider = (props) => {
 		addToWishlist,
 		removeFromCart,
 		updateCartItemCount,
-		getFavouriteProduct,
 		favouriteProduct,
 		removeAllFromCart,
 		removeFromWishList,

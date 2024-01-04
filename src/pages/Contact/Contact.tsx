@@ -40,7 +40,9 @@ const Contact = () => {
 							className="contact-textarea"
 							placeholder="Enter your message"
 						/>
-						<button className="contact-form-btn">Submit</button>
+						<button className="contact-form-btn" type="button">
+							Submit
+						</button>
 					</form>
 				</div>
 			</div>

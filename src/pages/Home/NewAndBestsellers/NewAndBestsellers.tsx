@@ -14,18 +14,17 @@ const NewAndBestsellers = (props: { newOrBestseller: string }) => {
 	return (
 		<div className="nb-container wrapper">
 			{products.map((product: ProductType) => {
+				const isFavourite = favouriteProduct.includes(product._id);
 				if (props.newOrBestseller === "bestsellers") {
 					if (product.bestseller) {
 						return (
 							<div className="nb-item">
 								<AiOutlineHeart
 									className={
-										product._id in favouriteProduct
-											? "nb-heart nb-active-heart"
-											: "nb-heart"
+										isFavourite ? "nb-heart nb-active-heart" : "nb-heart"
 									}
 									onClick={() =>
-										product._id in favouriteProduct
+										isFavourite
 											? removeFromWishList(product._id)
 											: addToWishlist(product._id)
 									}></AiOutlineHeart>
@@ -52,34 +51,36 @@ const NewAndBestsellers = (props: { newOrBestseller: string }) => {
 				} else {
 					if (product.new) {
 						return (
-							<Link to={`/details/${product._id}`} className="nb-item">
+							<div className="nb-item">
 								<AiOutlineHeart
 									className={
-										product._id in favouriteProduct
+										isFavourite
 											? "nb-heart nb-active-heart"
 											: "nb-heart"
 									}
 									onClick={() =>
-										product._id in favouriteProduct
+										isFavourite
 											? removeFromWishList(product._id)
 											: addToWishlist(product._id)
 									}></AiOutlineHeart>
-								<img
-									src={product.images[0]}
-									alt={product.name}
-									className="nb-img"
-								/>
-								<div className="nb-text-box">
+								<Link to={`/details/${product._id}`} className="nb-img-box">
+									<img
+										src={product.images[0]}
+										alt={product.name}
+										className="nb-img"
+									/>
+								</Link>
+								<Link to={`/details/${product._id}`} className="nb-text-box">
 									<p className="nb-category">{product.category}</p>
 									<p className="nb-name">{product.name}</p>
 									<p className="nb-price">${product.price.toFixed(2)}</p>
-								</div>
+								</Link>
 								<button
 									className="nb-btn"
 									onClick={() => addToCart(product._id)}>
 									Add To Cart
 								</button>
-							</Link>
+							</div>
 						);
 					}
 				}
