@@ -18,7 +18,7 @@ const NewAndBestsellers = (props: { newOrBestseller: string }) => {
 				if (props.newOrBestseller === "bestsellers") {
 					if (product.bestseller) {
 						return (
-							<div className="nb-item">
+							<div className="nb-item" key={product._id}>
 								<AiOutlineHeart
 									className={
 										isFavourite ? "nb-heart nb-active-heart" : "nb-heart"
@@ -51,12 +51,10 @@ const NewAndBestsellers = (props: { newOrBestseller: string }) => {
 				} else {
 					if (product.new) {
 						return (
-							<div className="nb-item">
+							<div className="nb-item" key={product._id}>
 								<AiOutlineHeart
 									className={
-										isFavourite
-											? "nb-heart nb-active-heart"
-											: "nb-heart"
+										isFavourite ? "nb-heart nb-active-heart" : "nb-heart"
 									}
 									onClick={() =>
 										isFavourite

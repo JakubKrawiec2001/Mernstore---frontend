@@ -96,7 +96,8 @@ const Sorting = (props: {
 									prev.set("category", category.name);
 									return prev;
 								});
-							}}>
+							}}
+							key={category.id}>
 							{category.name}
 						</p>
 					);

@@ -1,8 +1,9 @@
-import React from "react";
 import "./Stores.scss";
 import Heading from "../../components/Heading/Heading";
 import Footer from "../../components/Footer/Footer";
 import Delivery from "../../components/Delivery/Delivery";
+import store1 from "../../assets/images/store.jpg";
+import store2 from "../../assets/images/store-2.jpg";
 
 const Stores = () => {
 	return (
@@ -10,10 +11,16 @@ const Stores = () => {
 			<Heading title="Find Your Store"></Heading>
 			<div className="stores-container wrapper">
 				<div className="stores-box">
-					<div className="stores-image-container"></div>
+					<img
+						src={store1}
+						alt="Mernstore in Allentown"
+						className="stores-img"
+					/>
 					<div className="stores-text-box">
 						<p className="stores-name">MernStore Allentown</p>
-						<p className="stores-street">1511 Lehigh St, Allentown, PA 18103, USA</p>
+						<p className="stores-street">
+							1511 Lehigh St, Allentown, PA 18103, USA
+						</p>
 					</div>
 					<div className="stores-text-box">
 						<p className="stores-bold-text">Opening hours:</p>
@@ -26,10 +33,12 @@ const Stores = () => {
 					</div>
 				</div>
 				<div className="stores-box">
-					<div className="stores-image-container"></div>
+					<img src={store2} alt="Mernstore in Boston" className="stores-img" />
 					<div className="stores-text-box">
 						<p className="stores-name">MernStore Boston</p>
-						<p className="stores-street">200 Boylston St, Chestnut Hill, MA 02467, USA</p>
+						<p className="stores-street">
+							200 Boylston St, Chestnut Hill, MA 02467, USA
+						</p>
 					</div>
 					<div className="stores-text-box">
 						<p className="stores-bold-text">Opening hours:</p>

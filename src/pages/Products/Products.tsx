@@ -39,28 +39,38 @@ const Products = () => {
 			(colorParam === product.color || colorParam === "")
 		) {
 			foundProduct = true;
-			return <Product view={view} product={product}></Product>;
+			return (
+				<Product view={view} product={product} key={product._id}></Product>
+			);
 		} else if (
 			categoryParam === "Bestsellers" &&
 			product.bestseller &&
 			(colorParam === product.color || colorParam === "")
 		) {
 			foundProduct = true;
-			return <Product view={view} product={product}></Product>;
+			return (
+				<Product view={view} product={product} key={product._id}></Product>
+			);
 		} else if (
 			categoryParam === "Sale" &&
 			product.sale &&
 			(colorParam === product.color || colorParam === "")
 		) {
 			foundProduct = true;
-			return <Product view={view} product={product}></Product>;
+			return (
+				<Product view={view} product={product} key={product._id}></Product>
+			);
 		}
 
 		return null;
 	});
 
 	if (!foundProduct) {
-		productList.push(<p className="no-products-text">There are no products with the selected filter</p>);
+		productList.push(
+			<p className="no-products-text">
+				There are no products with the selected filter
+			</p>
+		);
 	}
 
 	return (

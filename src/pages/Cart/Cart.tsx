@@ -59,7 +59,7 @@ const Cart = () => {
 			<div className="cart-container wrapper">
 				{!loading ? (
 					cartItems.map((product: ProductType) => {
-						return <CartItem product={product}></CartItem>;
+						return <CartItem product={product} key={product._id}></CartItem>;
 					})
 				) : (
 					<Loading></Loading>
