@@ -29,7 +29,7 @@ const Cart = () => {
 		try {
 			setLoading(true);
 			const response = await axios.post(
-				"https://mernstore-backend.onrender.com/stripe/create-checkout-session",
+				"https://mernstore-backend-8e04304229af.herokuapp.com/stripe/create-checkout-session",
 				{
 					cartItems: cartItems,
 				}

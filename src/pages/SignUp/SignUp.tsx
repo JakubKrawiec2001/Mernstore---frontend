@@ -15,10 +15,13 @@ const SignUp = () => {
 	const handleSubmit = async (e: React.SyntheticEvent) => {
 		e.preventDefault();
 		try {
-			await axios.post("https://mernstore-backend.onrender.com/user/register", {
-				username,
-				password,
-			});
+			await axios.post(
+				"https://mernstore-backend-8e04304229af.herokuapp.com/user/register",
+				{
+					username,
+					password,
+				}
+			);
 			navigate("/sign-in");
 			toast.success("Registration completed");
 		} catch (err) {

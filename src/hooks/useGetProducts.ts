@@ -9,7 +9,7 @@ export const useGetProducts = () => {
 	const fetchProducts = async () => {
 		try {
 			const fetchedProducts = await axios.get(
-				"https://mernstore-backend.onrender.com/product"
+				"https://mernstore-backend-8e04304229af.herokuapp.com/product"
 			);
 			setLoading(false);
 			setProducts(fetchedProducts.data.products);
