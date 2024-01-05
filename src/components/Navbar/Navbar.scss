@@ -25,9 +25,18 @@
 			font-size: 1.6rem;
 			color: $black;
 		}
-		.mobile-menu-text:last-child {
+		.mobile-menu-text:nth-child(8) {
 			color: red;
 		}
+		.login-btn {
+			padding: 0.2em 0.5em;
+			width: 50%;
+			font-weight: 600;
+			background-color: $yellow;
+			border: none;
+			border-radius: 4px;
+		}
+
 		.close-icon {
 			position: absolute;
 			top: 2%;
@@ -118,6 +127,25 @@
 			}
 			.navbar-r {
 				display: none;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.navbar {
+		.mobile-menu {
+			.login-btn {
+				width: 30%;
+			}
+		}
+	}
+}
+@media screen and (min-width: 1024px) {
+	.navbar {
+		.mobile-menu {
+			.login-btn {
+				width: 20%;
 			}
 		}
 	}

@@ -9,18 +9,26 @@ import {
 	AiOutlineClose,
 } from "react-icons/ai";
 import { FiMenu } from "react-icons/fi";
-import AccountMenu from "./AccountMenu/AccountMenu";
 import { SelectedProductContext } from "../../context/selectedProductContext";
 import { useGetProducts } from "../../hooks/useGetProducts";
 import { toast } from "react-toastify";
+import { useCookies } from "react-cookie";
 
 const Navbar = () => {
 	const [open, setOpen] = useState(false);
-	const [openAccountMenu, setOpenAccountMenu] = useState(false);
 	const [searchedProduct, setSearchedProduct] = useState("");
 	const { totalNumberOfItems } = useContext(SelectedProductContext);
 	const { products } = useGetProducts();
 	const navigate = useNavigate();
+
+	const [cookies, setCookies] = useCookies(["access_token"]);
+
+	const logout = () => {
+		localStorage.clear();
+		setCookies("access_token", null);
+		toast.success("Signed out successfully");
+		setOpen(false);
+	};
 
 	const handleChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchedProduct(e.target.value);
@@ -48,10 +56,8 @@ const Navbar = () => {
 	};
 
 	return (
-		<div className="navbar" onMouseLeave={() => setOpenAccountMenu(false)}>
-			{openAccountMenu && <AccountMenu></AccountMenu>}
-
-			{open && <div className="shadow"></div>}
+		<div className="navbar">
+			{open && <div className="shadow" onClick={() => setOpen(false)}></div>}
 			<div className="wrapper navbar-container">
 				<div className="navbar-up">
 					<div className="navbar-l">
@@ -66,12 +72,20 @@ const Navbar = () => {
 						</Link>
 					</div>
 					<div className="navbar-r">
-						<p
-							className="navbar-text"
-							onMouseEnter={() => setOpenAccountMenu(true)}>
-							<MdAccountCircle className="navbar-text-icon"></MdAccountCircle>My
-							Account
-						</p>
+						{cookies.access_token ? (
+							<p className="navbar-text" onClick={logout}>
+								<MdAccountCircle className="navbar-text-icon"></MdAccountCircle>
+								Logout
+							</p>
+						) : (
+							<Link to="/sign-in">
+								<p className="navbar-text">
+									<MdAccountCircle className="navbar-text-icon"></MdAccountCircle>
+									Sign In
+								</p>
+							</Link>
+						)}
+
 						<NavLink to="/wishlist" className="navbar-text">
 							<AiOutlineHeart className="navbar-text-icon"></AiOutlineHeart>
 							Wishlist
@@ -109,12 +123,6 @@ const Navbar = () => {
 						</Link>
 					</div>
 					<div className="navbar-mobile-items">
-						<Link to="/" className="navbar-mobile-icon">
-							<MdAccountCircle
-								onClick={() =>
-									setOpenAccountMenu((prev) => !prev)
-								}></MdAccountCircle>
-						</Link>
 						<Link to="/wishlist" className="navbar-mobile-icon">
 							<AiOutlineHeart></AiOutlineHeart>
 						</Link>
@@ -144,29 +152,57 @@ const Navbar = () => {
 				<AiOutlineClose
 					className="close-icon"
 					onClick={() => setOpen(false)}></AiOutlineClose>
-				<Link to="/" className="mobile-menu-text">
+				<Link
+					to="/"
+					className="mobile-menu-text"
+					onClick={() => setOpen(false)}>
 					Home
 				</Link>
-				<Link to="/products" className="mobile-menu-text">
+				<Link
+					to="/products"
+					className="mobile-menu-text"
+					onClick={() => setOpen(false)}>
 					Shop
 				</Link>
 				<Link
 					to="/products?category=Bestsellers&color="
-					className="mobile-menu-text">
+					className="mobile-menu-text"
+					onClick={() => setOpen(false)}>
 					Bestsellers
 				</Link>
-				<Link to="/products?category=Sale&color=" className="mobile-menu-text">
+				<Link
+					to="/products?category=Sale&color="
+					className="mobile-menu-text"
+					onClick={() => setOpen(false)}>
 					Sale Products
 				</Link>
-				<Link to="/contact" className="mobile-menu-text">
+				<Link
+					to="/contact"
+					className="mobile-menu-text"
+					onClick={() => setOpen(false)}>
 					Contact
 				</Link>
-				<Link to="/stores" className="mobile-menu-text">
+				<Link
+					to="/stores"
+					className="mobile-menu-text"
+					onClick={() => setOpen(false)}>
 					Our Stores
 				</Link>
-				<Link to="/products?category=Sale&color=" className="mobile-menu-text">
+				<Link
+					to="/products?category=Sale&color="
+					className="mobile-menu-text"
+					onClick={() => setOpen(false)}>
 					Visit Hot Products
 				</Link>
+				{cookies.access_token ? (
+					<button className="mobile-menu-text login-btn" onClick={logout}>
+						Logout
+					</button>
+				) : (
+					<Link to="/sign-in">
+						<button className="mobile-menu-text login-btn">Sign In</button>
+					</Link>
+				)}
 			</div>
 		</div>
 	);

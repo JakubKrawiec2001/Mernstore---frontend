@@ -124,7 +124,7 @@
 @media screen and (min-width: 1024px) {
 	.f-container {
 		.f-item {
-			height: 20vh;
+			height: 30vh;
 
 			.f-text-box {
 				.f-text {
@@ -140,13 +140,7 @@
 		}
 	}
 }
-@media screen and (min-width: 1200px) {
-	.f-container {
-		.f-item {
-			height: 30vh;
-		}
-	}
-}
+
 @media screen and (min-width: 1400px) {
 	.f-container {
 		margin-top: 10em;

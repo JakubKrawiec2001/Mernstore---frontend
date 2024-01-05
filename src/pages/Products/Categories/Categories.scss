@@ -22,17 +22,17 @@
 			font-size: 1.2rem;
 			transition: all 0.3s ease;
 		}
-	}
-	.category-item-active {
-		border-bottom: 1px solid $black;
-		.category-text {
-			font-weight: 600;
-		}
 		&:hover {
 			border-bottom: 1px solid $black;
 			.category-text {
 				color: $yellow;
 			}
+		}
+	}
+	.category-item-active {
+		border-bottom: 1px solid $black;
+		.category-text {
+			font-weight: 600;
 		}
 	}
 }

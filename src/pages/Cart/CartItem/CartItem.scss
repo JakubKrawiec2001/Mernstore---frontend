@@ -1,11 +1,15 @@
 @use "../../../colors" as *;
 .cart-item-container {
+	display: flex;
+	flex-direction: column;
 	margin-top: 2em;
 	padding-bottom: 1em;
 	border-bottom: 1px solid #ddd;
+
 	.cart-item-l {
 		display: flex;
 		align-items: center;
+
 		.cart-item-img {
 			width: 100px;
 		}
@@ -19,8 +23,6 @@
 		justify-content: center;
 		align-items: center;
 		gap: 4em;
-		margin: 0 auto;
-		margin-top: 2em;
 
 		.cart-item-price {
 			font-weight: 600;
@@ -58,10 +60,15 @@
 	}
 }
 
+@media screen and (min-width: 768px) {
+	.cart-item-container {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+
 @media screen and (min-width: 1024px) {
 	.cart-item-container {
-		display: flex;
-		justify-content: space-between;
 		.cart-item-l {
 			.cart-item-img {
 				width: 120px;
