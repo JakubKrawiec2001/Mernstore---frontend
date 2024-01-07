@@ -10,7 +10,7 @@
 
 ## Introduction
 
-The project was created with the goal of creating a responsive and modern online store that allows easy online shopping for electronics. The goal was to combine advanced technologies such as React, MongoDB and Stripe to create a comprehensive e-commerce platform. The website's backend was deployed on the Heroku platform [Backend repo](https://github.com/JakubKrawiec2001/Mernstore---backend)  
+The project was made with the goal of creating a responsive and modern online store that allows easy online shopping for electronics. The goal was to combine advanced technologies such as React, MongoDB and Stripe to create a comprehensive e-commerce platform. Some of the key functionalities of Mernstore are: adding products to the shopping cart, saving selected products to the favorites list, thanks to the stripe in the test version it is possible to simulate the purchase of products. There is also a login panel and new user registration. The website's backend was deployed on the Heroku platform [Backend repo](https://github.com/JakubKrawiec2001/Mernstore---backend)  
 
 <br />
 
