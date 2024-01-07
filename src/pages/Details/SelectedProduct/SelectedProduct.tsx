@@ -25,6 +25,7 @@ const SelectedProduct = (props: { product: ProductType }) => {
 
 		setSlideNumber(newSlideNumber);
 	};
+	const isFavourite = favouriteProduct.includes(product._id);
 	return (
 		<div className="selected-product-container wrapper">
 			<div className="selected-product-l">
@@ -77,19 +78,17 @@ const SelectedProduct = (props: { product: ProductType }) => {
 				</p>
 				<button
 					className={
-						product._id in favouriteProduct
+						isFavourite
 							? "selected-product-wishlist-btn selected-product-wishlist-active-btn"
 							: "selected-product-wishlist-btn"
 					}
 					onClick={() =>
-						product._id in favouriteProduct
+						isFavourite
 							? removeFromWishList(product._id)
 							: addToWishlist(product._id)
 					}>
 					<FaHeart className="selected-product-wishlist-icon" />{" "}
-					{product._id in favouriteProduct
-						? "Added To Wishlist"
-						: "Add To Wishlist"}
+					{isFavourite ? "Added To Wishlist" : "Add To Wishlist"}
 				</button>
 				<img src={payments} alt="" className="selected-product-payments-img" />
 			</div>
