@@ -10,16 +10,17 @@ import { ProductType } from "../../types/types";
 import { useSearchParams } from "react-router-dom";
 import { SelectedProductContext } from "../../context/selectedProductContext";
 import Loading from "../../components/Loading/Loading";
+import { products } from "../../data/productsData";
 
 const Products = () => {
 	const [view, setView] = useState("vertical");
 	const [sortOrder, setSortOrder] = useState<string>("");
-	const { products } = useGetProducts();
+	// const { products } = useGetProducts();
 	const [searchParams, setSearchParams] = useSearchParams({
 		category: "All",
 		color: "",
 	});
-	const { loading } = useContext(SelectedProductContext);
+	const { loading, setLoading } = useContext(SelectedProductContext);
 
 	const categoryParam = searchParams.get("category");
 	const colorParam = searchParams.get("color");
@@ -34,6 +35,7 @@ const Products = () => {
 	});
 	let foundProduct = false;
 	const productList = sortedProducts.map((product: ProductType) => {
+		setLoading(false)
 		if (
 			(categoryParam === "All" || categoryParam === product.category) &&
 			(colorParam === product.color || colorParam === "")

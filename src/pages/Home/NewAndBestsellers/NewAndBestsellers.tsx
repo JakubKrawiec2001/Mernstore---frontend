@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 import { ProductType } from "../../../types/types";
 import { useGetProducts } from "../../../hooks/useGetProducts";
 import { SelectedProductContext } from "../../../context/selectedProductContext";
+import { products } from "../../../data/productsData";
 
 const NewAndBestsellers = (props: { newOrBestseller: string }) => {
-	const { products } = useGetProducts();
+	// const { products } = useGetProducts();
 	const { addToCart, addToWishlist, favouriteProduct, removeFromWishList } =
 		useContext(SelectedProductContext);
 

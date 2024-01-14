@@ -10,7 +10,7 @@ export type ProductType = {
 	new: boolean;
 	color: string;
 	sale: boolean;
-	quantity: number;
+	quantity?: number;
 };
 
 export type ShopType = {
