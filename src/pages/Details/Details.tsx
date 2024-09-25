@@ -5,12 +5,12 @@ import Footer from "../../components/Footer/Footer";
 import Delivery from "../../components/Delivery/Delivery";
 import Heading from "../../components/Heading/Heading";
 import Reviews from "./Reviews/Reviews";
-import { useGetProducts } from "../../hooks/useGetProducts";
 import { ProductType } from "../../types/types";
+import { products } from "../../data/productsData";
 
 const Details = () => {
 	const { id } = useParams();
-	const { products } = useGetProducts();
+
 	return (
 		<>
 			{id &&

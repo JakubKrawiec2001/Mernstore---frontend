@@ -76,7 +76,7 @@ const Products = () => {
 	}
 
 	return (
-		<div>
+		<>
 			<Categories
 				setSearchParams={setSearchParams}
 				categoryParam={categoryParam}></Categories>
@@ -95,7 +95,7 @@ const Products = () => {
 			</div>
 			<Delivery></Delivery>
 			<Footer></Footer>
-		</div>
+		</>
 	);
 };
 
